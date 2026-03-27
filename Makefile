@@ -6,10 +6,10 @@ CONTENT_ID  := IV0000-BGEN00014_00-OGGPLRAA00000000
 
 # Libraries linked into the ELF.
 LIBS        := -lSDL2 \
-	    -logg \
-	    -lvorbis \
-	    -lvorbisfile \
-	    -lkernel \
+	    	-logg \
+	    	-lvorbis \
+	    	-lvorbisfile \
+	    	-lkernel \
             -lScePosix \
             -lc \
             -lc++ \
