@@ -5,10 +5,6 @@
 #include <SDL2/SDL.h>
 #include <vorbis/codec.h>
 #include <vorbis/vorbisfile.h>
-#include <orbis/libkernel.h>
-#include <orbis/Sysmodule.h>
-#include <orbis/UserService.h>
-#include <orbis/Keyboard.h>
 
 #define PROGRESS_BAR_WIDTH 1000
 #define PROGRESS_BAR_HEIGHT 35
@@ -18,12 +14,6 @@
 #define AUDIO_BUFFER_COUNT 2
 #define AUDIO_SAMPLE_RATE 44100
 #define AUDIO_BUFFER_SAMPLES 4096
-
-
-int PS4_Keyboard_Init (void);
-int PS4_Keyboard_Open (void);
-int PS4_Keyboard_PumpEvents (void);
-int PS4_Keyboard_Close (void);
 
 float audioBuffer[AUDIO_BUFFER_SIZE];
 int bufferIndex = 0;
@@ -223,9 +213,6 @@ main (int argc, char *argv[])
       return 1;
     }
 
-  PS4_Keyboard_Init ();
-  PS4_Keyboard_Open ();
-
   SDL_Window *window = SDL_CreateWindow ("ogg-plr",
 					 SDL_WINDOWPOS_UNDEFINED,
 					 SDL_WINDOWPOS_UNDEFINED,
@@ -289,7 +276,6 @@ main (int argc, char *argv[])
 
   while (!quit)
     {
-      PS4_Keyboard_PumpEvents ();
       while (SDL_PollEvent (&event))
 	{
 	  if (event.type == SDL_QUIT)
